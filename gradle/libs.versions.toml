@@ -18,7 +18,7 @@ kotlinxCoroutinesViewModel = "2.7.0"
 kotlinxCoroutinesRuntime = "2.7.0"
 hiltLifecycleViewodel = "1.0.0-alpha03"
 hiltCompiler = "1.2.0"
-hiltNavigationCompose = "1.0.0-alpha03"
+hiltNavigationCompose = "1.2.0"
 retrofit = "2.9.0"
 
 [libraries]
