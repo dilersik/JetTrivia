@@ -11,14 +11,12 @@ class QuestionRepositoryImp @Inject constructor(
     private val api: QuestionApi,
 ) : QuestionRepository {
 
-    private val resultWrapperList = ResultWrapper<ArrayList<QuestionItem>, Boolean, Exception>()
+    private val resultWrapperList = ResultWrapper<ArrayList<QuestionItem>, Exception>()
 
-    override suspend fun getAll(): ResultWrapper<ArrayList<QuestionItem>, Boolean, Exception> =
+    override suspend fun getAll(): ResultWrapper<ArrayList<QuestionItem>, Exception> =
         with(resultWrapperList) {
             try {
-                loading = true
                 data = api.getAll()
-                if (data.toString().isNotEmpty()) loading = false
             } catch (e: Exception) {
                 exception = e
                 Log.e(TAG, "getAll: ${e.localizedMessage}")
