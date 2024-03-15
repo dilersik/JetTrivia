@@ -4,6 +4,4 @@ import androidx.compose.runtime.Composable
 import com.example.jettrivia.component.Questions
 
 @Composable
-fun TriviaHome(viewModel: QuestionViewModel) {
-    Questions(viewModel)
-}
+fun TriviaHome(viewModel: QuestionViewModel) = Questions(viewModel)
