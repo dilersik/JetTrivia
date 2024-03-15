@@ -12,7 +12,7 @@ import com.example.jettrivia.ui.view.QuestionViewModel
 @Composable
 fun Questions(viewModel: QuestionViewModel) {
     val questions = viewModel.data.value.data?.toMutableList()
-    if (viewModel.loading)
+    if (viewModel.data.value.loading == true)
         CircularProgressIndicator(modifier = Modifier.size(100.dp))
     else
         Toast.makeText(LocalContext.current, "Loaded ${questions?.size}", Toast.LENGTH_SHORT).show()

@@ -11,21 +11,18 @@ class QuestionRepositoryImp @Inject constructor(
     private val api: QuestionApi,
 ) : QuestionRepository {
 
-    private val resultWrapperList = ResultWrapper<ArrayList<QuestionItem>, Exception>()
-
-    override suspend fun getAll(): ResultWrapper<ArrayList<QuestionItem>, Exception> =
-        with(resultWrapperList) {
-            try {
-                data = api.getAll()
-            } catch (e: Exception) {
-                exception = e
-                Log.e(TAG, "getAll: ${e.localizedMessage}")
-            }
-            this
+    override suspend fun getAll(): ResultWrapper<ArrayList<QuestionItem>, Boolean, Exception> {
+        val resultWrapperList = ResultWrapper<ArrayList<QuestionItem>, Boolean, Exception>()
+        try {
+            resultWrapperList.data = api.getAll()
+        } catch (e: Exception) {
+            resultWrapperList.exception = e
+            Log.e(TAG, "getAll: ${e.localizedMessage}")
         }
+        return resultWrapperList
+    }
 
-
-    private companion object{
+    private companion object {
         private const val TAG = "QuestionRepositoryImp"
     }
 }
